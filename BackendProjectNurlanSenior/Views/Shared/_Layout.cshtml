@@ -43,8 +43,8 @@
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="header-top-right text-right">
                             <ul>
-                                <li><a href="~/assets/login.html">login</a></li>
-                                <li><a href="~/assets/signup.html">signup</a></li>
+                                <li><a asp-controller="account" asp-action="login">login</a></li>
+                                <li><a asp-controller="account" asp-action="register">signup</a></li>
                             </ul>
                         </div>
                     </div>
@@ -84,12 +84,12 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="~/assets/event.html">event</a>
+                                            <a asp-controller="event" asp-action="index">event</a>
                                             <ul>
                                                 <li><a href="~/assets/event.html">event</a></li>
                                                 <li><a href="~/assets/event-left-side-bar.html">event left sidebar</a></li>
-                                                <li><a href="~/assets/event-right-side-bar.html">event right sidebar</a></li>
-                                                <li><a href="~/assets/event-details.html">event details</a></li>
+                                                <li><a asp-controller="event" asp-action="index">event right sidebar</a></li>
+                                                <li><a asp-controller="event" asp-action="details" >event details</a></li>
                                             </ul>
                                         </li>
                                         <li class="hidden-sm">

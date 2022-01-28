@@ -1,5 +1,6 @@
 ﻿using BackendProjectNurlanSenior.Dal;
 using BackendProjectNurlanSenior.Models;
+using BackendProjectNurlanSenior.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -25,12 +26,53 @@ namespace BackendProjectNurlanSenior.Controllers
 
         public IActionResult Details(int id=8)
         {
-            Course course = _context.Courses.Include(c => c.Features).FirstOrDefault(c => c.Id == id);
-            if (course==null)
+            CourseVM courseVM = new CourseVM
+            {
+                Course = _context.Courses.Include(c => c.Features).Include(c => c.CourseTags).ThenInclude(ct => ct.Tag).Include(c => c.CCategory).FirstOrDefault(c => c.Id == id),
+                Courses = _context.Courses.ToList(),
+                Tags = _context.Tags.Include(t => t.CourseTags).ThenInclude(ct => ct.Course).ToList()
+        };
+
+           
+            ViewBag.CourseCategories = _context.CCategories.Include(c=>c.Courses).ToList();
+            if (courseVM==null)
             {
                 return NotFound();
             }
-            return View(course);
+            return View(courseVM);
+        }
+
+        public IActionResult CategoryRelatedCourse(int id)
+        {
+            List<Course> courses = _context.Courses.Include(c => c.CCategory).Where(c => c.CCategory.Id == id).ToList();
+            if (courses==null)
+            {
+                return NotFound();
+            }
+            return View(courses);
+        }
+
+        public IActionResult TagRelatedCourse(int id)
+        {
+            CourseVM courseVM = new CourseVM
+            {
+                Courses = _context.Courses.Include(c => c.CourseTags).ThenInclude(ct => ct.Tag).Where(c => c.CourseTags.All(ct => ct.TagId == id)).ToList()
+            };
+
+            List<Course> courses = _context.Courses.Include(c=>c.CourseTags).Where(c=>c.CourseTags.Any(ct=>ct.TagId==id)).ToList();
+            
+
+            if (courseVM==null)
+            {
+                return NotFound();
+            }
+            return View(courses);
+        }
+
+        public IActionResult Search(string Name)
+        {
+            List<Course> courses = _context.Courses.Where(c => c.Name.ToLower().Contains(Name.ToLower())).ToList();
+            return View(courses);
         }
     }
 }

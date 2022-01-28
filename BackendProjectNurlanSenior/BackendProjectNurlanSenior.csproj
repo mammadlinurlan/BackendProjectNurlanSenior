@@ -5,6 +5,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20220128062422_createdCategoryTagCourse.cs" />
+    <Compile Remove="Migrations\20220128062422_createdCategoryTagCourse.Designer.cs" />
+    <Compile Remove="Migrations\20220128063127_createdCategoryTagCourses.cs" />
+    <Compile Remove="Migrations\20220128063127_createdCategoryTagCourses.Designer.cs" />
+    <Compile Remove="Migrations\20220128063626_createdCourseTags.cs" />
+    <Compile Remove="Migrations\20220128063626_createdCourseTags.Designer.cs" />
+    <Compile Remove="Migrations\20220128064131_createdCourseCategory.cs" />
+    <Compile Remove="Migrations\20220128064131_createdCourseCategory.Designer.cs" />
+    <Compile Remove="Migrations\20220128064801_createdCourseCategoryRelations.cs" />
+    <Compile Remove="Migrations\20220128064801_createdCourseCategoryRelations.Designer.cs" />
+    <Compile Remove="Migrations\20220128065255_test.cs" />
+    <Compile Remove="Migrations\20220128065255_test.Designer.cs" />
+    <Compile Remove="Migrations\20220128065826_courseCategoryRelation.cs" />
+    <Compile Remove="Migrations\20220128065826_courseCategoryRelation.Designer.cs" />
+    <Compile Remove="Migrations\20220128070428_mgmg.cs" />
+    <Compile Remove="Migrations\20220128070428_mgmg.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.22" />

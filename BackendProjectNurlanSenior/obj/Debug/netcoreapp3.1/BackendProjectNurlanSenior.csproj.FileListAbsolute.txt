@@ -156,3 +156,13 @@ C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSen
 C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Course\Index.cshtml.g.cs
 C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Course\Details.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CoursePartialView.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Course\CategoryRelatedCourse.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Course\TagRelatedCourse.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Course\Search.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Event\Index.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Event\Details.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Event\SearchResult.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EventPartialView.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs

@@ -26,8 +26,15 @@ using BackendProjectNurlanSenior.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\Views\_ViewImports.cshtml"
+using BackendProjectNurlanSenior.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2ef8691dfbde821af28f90d1d5776917feb52e7d", @"/Views/Teacher/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"53010158b18b89f091c4a1f1c22ca09794a26492", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0e145a45e4b143f3e1eafeaa21a7efdd2d8d36b4", @"/Views/_ViewImports.cshtml")]
     public class Views_Teacher_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Teacher>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("style", new global::Microsoft.AspNetCore.Html.HtmlString("width:470px"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -97,7 +104,7 @@ using BackendProjectNurlanSenior.Models;
             <div class=""col-md-5 col-sm-5 col-xs-12"">
                 <div class=""teacher-details-img"">
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "2ef8691dfbde821af28f90d1d5776917feb52e7d7432", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "2ef8691dfbde821af28f90d1d5776917feb52e7d7668", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -356,7 +363,7 @@ WriteAttributeValue("", 2405, social.Logo, 2405, 12, false);
                     <p>I must explain to you how all this mistaken idea </p>
                 </d");
             WriteLiteral("iv>\r\n                <div class=\"newsletter-form mc_embed_signup\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ef8691dfbde821af28f90d1d5776917feb52e7d20598", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ef8691dfbde821af28f90d1d5776917feb52e7d20834", async() => {
                 WriteLiteral("\r\n                        <div id=\"mc_embed_signup_scroll\" class=\"mc-form\">\r\n                            <input type=\"email\"");
                 BeginWriteAttribute("value", " value=\"", 8032, "\"", 8040, 0);
                 EndWriteAttribute();

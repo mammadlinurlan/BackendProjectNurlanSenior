@@ -28,34 +28,16 @@
                     <h3>search courses</h3>
                 </div>
                 <div class="course-form">
-                    <form id="search" action="#">
-                        <input type="search" placeholder="Search..." name="search" />
+                    <form method="get" asp-action="search" asp-controller="course">
+                        <input type="text" name="Name" id="Name" />
                         <button type="submit">search</button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="row">
-            @foreach (Course course in Model)
-            {
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single-course mb-70">
-                        <div class="course-img">
-                            <a asp-controller="course" asp-action="details" asp-route-id="@course.Id">
-                                <img src="~/assets/img/course/@course.Image" alt="course">
-                                <div class="course-hover">
-                                    <i class="@course.LinkLogo"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="course-content">
-                            <h3><a href="course-details.html">@course.Name</a></h3>
-                            <p>@course.Description.Substring(0,80)...</p>
-                            <a class="default-btn" asp-controller="course" asp-action="details" asp-route-id="@course.Id" >read more</a>
-                        </div>
-                    </div>
-                </div>
-            }
+            
+            @await Html.PartialAsync("_CoursePartialView",Model)
 
 
 

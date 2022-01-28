@@ -43,6 +43,11 @@ namespace BackendProjectNurlanSenior.Models
 
         public Features Features { get; set; }
 
+        public List<CourseTag> CourseTags { get; set; }
+
+        public CCategory CCategory { get; set; }
+
+
 
     }
 }
