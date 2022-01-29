@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@inject BackendProjectNurlanSenior.Services.LayoutService layoutService
+<!doctype html>
 <html class="no-js" lang="en">
 
 <!-- Mirrored from demo.devitems.com/eduhome/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jun 2020 19:37:50 GMT -->
@@ -24,6 +25,7 @@
     <link rel="stylesheet" href="~/assets/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="~/assets/css/style.css">
     <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <script src="~/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -37,14 +39,24 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         <div class="header-top-left">
-                            <p>HAVE ANY QUESTION ?  +880 5698  598  6587</p>
+                            <p>@layoutService.GetSettings().Question  @layoutService.GetSettings().Phone</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="header-top-right text-right">
                             <ul>
-                                <li><a asp-controller="account" asp-action="login">login</a></li>
-                                <li><a asp-controller="account" asp-action="register">signup</a></li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li><a>@User.Identity.Name</a></li>
+                                    <li><a asp-controller="account" asp-action="logout">Logout</a></li>
+
+                                }
+                                else
+                                {
+                                    <li><a asp-controller="account" asp-action="login">login</a></li>
+                                    <li><a asp-controller="account" asp-action="register">signup</a></li>
+                                }
+
                             </ul>
                         </div>
                     </div>
@@ -56,7 +68,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="logo">
-                            <a href="~/assets/index.html"><img src="~/assets/img/logo/logo2.png" alt="eduhome" /></a>
+                            <a asp-controller="home" asp-action="index"><img src="~/assets/img/logo/@layoutService.GetSettings().LogoBig" alt="eduhome" /></a>
                         </div>
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-6">
@@ -66,50 +78,50 @@
                                 <nav>
                                     <ul>
                                         <li>
-                                            <a href="~/assets/index.html">Home</a>
-                                            <ul>
+                                            <a asp-controller="home" asp-action="index">Home</a>
+                                            @*<ul>
                                                 <li><a href="~/assets/index.html">Home One</a></li>
                                                 <li><a href="~/assets/index-2.html">Home Two</a></li>
                                                 <li><a href="~/assets/index-3.html">Home Three</a></li>
                                                 <li><a href="~/assets/index-4.html">Home Four</a></li>
                                                 <li><a href="~/assets/index-5.html">Home Five</a></li>
-                                            </ul>
+                                            </ul>*@
                                         </li>
-                                        <li><a href="~/assets/about.html">About</a></li>
+                                        <li><a asp-controller="about" asp-action="index">About</a></li>
                                         <li>
                                             <a asp-controller="course" asp-action="index">courses</a>
-                                            <ul>
+                                            @*<ul>
                                                 <li><a asp-controller="course" asp-action="index">courses</a></li>
-                                                <li><a asp-controller="course" asp-action="details" >courses details</a></li>
-                                            </ul>
+                                                <li><a asp-controller="course" asp-action="details">courses details</a></li>
+                                            </ul>*@
                                         </li>
                                         <li>
                                             <a asp-controller="event" asp-action="index">event</a>
-                                            <ul>
+                                            @*<ul>
                                                 <li><a href="~/assets/event.html">event</a></li>
                                                 <li><a href="~/assets/event-left-side-bar.html">event left sidebar</a></li>
                                                 <li><a asp-controller="event" asp-action="index">event right sidebar</a></li>
-                                                <li><a asp-controller="event" asp-action="details" >event details</a></li>
-                                            </ul>
+                                                <li><a asp-controller="event" asp-action="details">event details</a></li>
+                                            </ul>*@
                                         </li>
                                         <li class="hidden-sm">
                                             <a asp-controller="teacher" asp-action="index">teacher</a>
-                                            <ul>
+                                            @*<ul>
                                                 <li><a asp-controller="teacher" asp-action="index">teacher</a></li>
                                                 <li><a asp-controller="teacher" asp-action="details" asp-route-id="1">teacher details</a></li>
-                                            </ul>
+                                            </ul>*@
                                         </li>
                                         <li>
-                                            <a href="~/assets/blog.html">blog</a>
-                                            <ul>
+                                            <a asp-controller="blog" asp-action="index">blog</a>
+                                            @*<ul>
                                                 <li><a href="~/assets/blog.html">blog</a></li>
                                                 <li><a href="~/assets/blog-left-side-bar.html">blog left sidebar</a></li>
                                                 <li><a href="~/assets/blog-right-side-bar.html">blog righ sidebar</a></li>
                                                 <li><a href="~/assets/blog-details.html">blog details</a></li>
-                                            </ul>
+                                            </ul>*@
                                         </li>
-                                        <li><a href="~/assets/contact.html">Contact</a></li>
-                                        <li><a href="~/assets/#">Buy Now</a>
+                                        <li><a asp-controller="contact" asp-action="index">Contact</a></li>
+                                        
                                     </ul>
                                 </nav>
                             </div>
@@ -117,7 +129,7 @@
                             <div class="search-btn">
                                 <ul data-toggle="dropdown" class="header-search search-toggle">
                                     <li class="search-menu">
-                                        <i class="fa fa-search"></i>
+                                        <i class="@layoutService.GetSettings().SearchIcon"></i>
                                     </li>
                                 </ul>
                                 <div class="search">
@@ -147,6 +159,35 @@
     @RenderBody()
 
 
+    <div class="subscribe-area pt-60 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="subscribe-content section-title text-center">
+                        <h2>@layoutService.GetSettings().SubsTitle</h2>
+                        <p>@layoutService.GetSettings().SubsDesc</p>
+                    </div>
+                    <div class="newsletter-form mc_embed_signup">
+                        <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <div id="mc_embed_signup_scroll" class="mc-form">
+                                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter your e-mail address" required>
+                                 
+                                <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
+                                <button id="mc-embedded-subscribe" class="default-btn" type="submit" name="subscribe"><span>subscribe</span></button>
+                            </div>
+                        </form>
+                         @*mailchimp-alerts Start 
+                        <div class="mailchimp-alerts">
+                            <div class="mailchimp-submitting"></div> mailchimp-submitting end 
+                            <div class="mailchimp-success"></div> mailchimp-success end 
+                            <div class="mailchimp-error"></div> mailchimp-error end 
+                        </div>
+                         mailchimp-alerts end*@ 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <footer class="footer-area">
@@ -156,15 +197,15 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-widget pr-60">
                             <div class="footer-logo pb-25">
-                                <a href="~/assets/index.html"><img src="~/assets/img/logo/footer-logo.png" alt="eduhome"></a>
+                                <a href="~/assets/index.html"><img src="~/assets/img/logo/@layoutService.GetSettings().LogoBig" alt="eduhome"></a>
                             </div>
-                            <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and give you a coete account of the system. </p>
+                            <p>@layoutService.GetSettings().FooterDesc</p>
                             <div class="footer-social">
                                 <ul>
-                                    <li><a href="~/assets/#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                    <li><a href="~/assets/#"><i class="zmdi zmdi-pinterest"></i></a></li>
-                                    <li><a href="~/assets/#"><i class="zmdi zmdi-vimeo"></i></a></li>
-                                    <li><a href="~/assets/#"><i class="zmdi zmdi-twitter"></i></a></li>
+                                    <li><a href="@layoutService.GetSettings().FbLink"><i class="@layoutService.GetSettings().FbIcon"></i></a></li>
+                                    <li><a href="@layoutService.GetSettings().InstaLink"><i class="@layoutService.GetSettings().InstaIcon"></i></a></li>
+                                    <li><a href="@layoutService.GetSettings().VimeoLink"><i class="@layoutService.GetSettings().VimeoIcon"></i></a></li>
+                                    <li><a href="@layoutService.GetSettings().TwitterLink"><i class="@layoutService.GetSettings().TwitterIcon"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -196,9 +237,10 @@
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="single-widget">
                             <h3>get in touch</h3>
-                            <p>Your address goes here, Street<br>City, Roadno 785 New York</p>
-                            <p>+880  548  986  898  87<br>+880  659  785  658  98</p>
-                            <p>info@eduhome.com<br>www.eduhome.com</p>
+                            <p>@layoutService.GetSettings().Adress</p>
+                            <p>@layoutService.GetSettings().Phone</p>
+                            <p>@layoutService.GetSettings().Website</p>
+                            <p>@layoutService.GetSettings().Mail</p>
                         </div>
                     </div>
                 </div>
@@ -215,7 +257,6 @@
         </div>
     </footer>
     <!-- Footer End -->
-
     <script src="~/assets/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="~/assets/js/bootstrap.min.js"></script>
     <script src="~/assets/js/jquery.meanmenu.js"></script>
@@ -226,6 +267,8 @@
     <script src="~/assets/js/jquery.nicescroll.min.js"></script>
     <script src="~/assets/js/plugins.js"></script>
     <script src="~/assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     @RenderSection("Scripts", required: false)
 
 </body>

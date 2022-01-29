@@ -1,0 +1,10 @@
+﻿@model HomeVM
+ 
+@foreach (NoticeBoard item in Model.NoticeBoards)
+{
+    <div class="single-notice-left mb-23 pb-20">
+        <h4>@item.Question</h4>
+        <p>@item.Answer</p>
+    </div>
+
+}

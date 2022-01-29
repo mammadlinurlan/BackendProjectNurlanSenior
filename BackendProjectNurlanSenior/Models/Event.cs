@@ -38,5 +38,7 @@ namespace BackendProjectNurlanSenior.Models
         [StringLength(maximumLength:150)]
         public string Image { get; set; }
 
+        public List<Comment> Comments { get; set; }
+
     }
 }

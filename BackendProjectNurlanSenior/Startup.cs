@@ -1,5 +1,6 @@
 using BackendProjectNurlanSenior.Dal;
 using BackendProjectNurlanSenior.Models;
+using BackendProjectNurlanSenior.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,8 @@ namespace BackendProjectNurlanSenior
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
+
+            services.AddScoped<LayoutService>();
 
 
             //services.AddScoped<LayoutServices>();

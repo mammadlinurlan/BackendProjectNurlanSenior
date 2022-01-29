@@ -47,6 +47,8 @@ namespace BackendProjectNurlanSenior.Models
 
         public CCategory CCategory { get; set; }
 
+        public List<Comment> Comments { get; set; }
+
 
 
     }

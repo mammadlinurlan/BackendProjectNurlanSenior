@@ -35,6 +35,20 @@ namespace BackendProjectNurlanSenior.Dal
         public DbSet<EventSpeaker> EventSpeakers { get; set; }
         public DbSet<Speaker> Speakers { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
+
+        public DbSet<WelcomeEdu> WelcomeEdus { get; set; }
+
+        public DbSet<NoticeBoard> NoticeBoards { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Settings> Settings { get; set; }
+
+        public DbSet<Contact> Contacts { get; set; }
+
+        public DbSet<ContactMessage> ContactMessages { get; set; }
+
 
 
     }

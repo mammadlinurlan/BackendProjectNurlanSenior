@@ -12,5 +12,7 @@ namespace BackendProjectNurlanSenior.ViewModels
         public Course Course { get; set; }
 
         public List<Tag> Tags { get; set; }
+
+        public List<Comment> Comments { get; set; }
     }
 }
