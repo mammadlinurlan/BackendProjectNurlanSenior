@@ -1,0 +1,197 @@
+﻿@model BlogVM
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="banner-area-wrapper">
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>Blog / details</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Area End -->
+<!-- Blog Details Start -->
+<div class="Blog-details-area blog-area pt-150 pb-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog-details">
+
+
+
+
+
+                    <div class="blog-details-img">
+                        <img style="width:778px;height:360px;" src="~/assets/img/Blog/@Model.Blog.Image" alt="Blog-details">
+                    </div>
+                    <div class="blog-details-content">
+                        <h2>@Model.Blog.Name</h2>
+                        <h6>
+                            By @Model.Blog.Author  /  @Model.Blog.CreatedTime.ToString("dd MMMM yyyy")  /  <i class="fa fa-comments-o"></i> @Model.Blog.Comments.Count()
+                        </h6>
+                        <p>@Model.Blog.Description</p>
+
+                        <p class="quote">@Model.Blog.BlackQuote</p>
+
+                    </div>
+
+
+                    <div class="reply-area">
+                        <h3>LEAVE A REPLY</h3>
+                        <p>@Model.Blog.LeaveReply</p>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <form asp-action="AddComment" method="post">
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <p>Subject</p>
+                                        <input asp-for="@Model.Blog.Comments.FirstOrDefault().Subject">
+                                        <p>Message</p>
+                                        <textarea asp-for="@Model.Blog.Comments.FirstOrDefault().Message" cols="15" rows="10"></textarea>
+                                        <input type="hidden" asp-for="@Model.Blog.Comments.FirstOrDefault().BlogId" value="@Model.Blog.Id" />
+                                    </div>
+                                </div>
+                                <button id="addComment" type="submit"><span>send message</span></button>
+
+                                <p class="form-messege"></p>
+                            </form>
+                            <div id="addedComments">
+                                <h2>COMMENTS</h2><br />
+                                @await Html.PartialAsync("_bCommentPartialView", Model)
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-sidebar right">
+                    <div class="single-blog-widget mb-50">
+                        <h3>search</h3>
+                        <div class="blog-search">
+                            <form method="get" asp-action="searchresult" asp-controller="Blog">
+                                <input type="text" id="Name" placeholder="Search..." name="Name" />
+                                <button type="submit">
+                                    <span><i class="fa fa-search"></i></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <div class="single-blog-banner">
+                            <a href="blog-details.html" id="blog"><img src="~/assets/img/blog/blog-img.jpg" alt="blog"></a>
+                            <h2>best<br> eductaion<br> theme</h2>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <h3>latest post</h3>
+                        @foreach (Blog item in Model.Blogs.OrderByDescending(e => e.Id).Take(3))
+                        {
+                            <div class="single-post mb-40">
+                                <div class="single-post-img">
+                                    <a asp-controller="Blog" asp-action="details" asp-route-id="@item.Id">
+                                        <img style="width:95px;height:75px;" src="~/assets/img/Blog/@item.Image" alt="post">
+                                        <div class="blog-hover">
+                                            <i class="fa fa-link"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="single-post-content">
+                                    <h4><a asp-controller="Blog" asp-action="details" asp-route-id="@item.Id">@item.Name</a></h4>
+                                    <p>@item.CreatedTime.ToString("dd MMMM yyyy")</p>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Details End -->
+<!-- Subscribe Start -->
+@*@section Scripts{
+        <script>
+            $(document).ready(function () {
+                $("#deleteCmt").click(function (e) {
+                    e.prBlogDefault();
+                    var value = $("#hiddenId").val();
+                    var url = '/Blog/DeleteComment?id=' + value;
+                    console.log(url);
+
+                    $.ajax({
+                        url: '/Blog/DeleteComment?id=' + value,
+                        type: "Get",
+                        success: function (res) {
+
+                            console.log($(res).)
+                        }
+                    });
+
+                    //fetch(url).then(res => res.json()).then(data => {
+                    //    if (true) {
+
+                    //    }
+                    //    $(data).remove();
+                    //    //location.reload();
+                    //})
+
+
+                })
+            })
+        </script>
+    }*@
+
+@section Scripts{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(".deleteCmt").click(function (e) {
+            e.preventDefault()
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var value = $(this).prev().prev().val()
+                    var url = '/Blog/DeleteComment?id=' + value;
+
+
+                    fetch(url).then(response => response.json()).then(data => {
+                        console.log(data.status)
+                        if (data.status == 200) {
+                            location.reload(true)
+                        } else {
+                            Swal.fire(
+                                'Not found!',
+                                'Your file can not be deleted.',
+                                'Failed'
+
+                            )
+                        }
+                    }
+                    );
+                }
+            })
+        })
+    </script>
+}
+
+

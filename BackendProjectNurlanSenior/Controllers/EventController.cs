@@ -46,7 +46,7 @@ namespace BackendProjectNurlanSenior.Controllers
         {
             EventVM eventVM = new EventVM
             {
-                Events = _context.Events.Where(e => e.Name.ToLower().Contains(Name.ToLower())).ToList()
+                Events =  Name==null ? _context.Events.ToList() : _context.Events.Where(e => e.Name.ToLower().Trim().Contains(Name.ToLower().Trim())).ToList()
             };
             ViewBag.LastEvents = _context.Events.OrderByDescending(e => e.Id).Take(3).ToList();
             return View(eventVM);
@@ -57,7 +57,7 @@ namespace BackendProjectNurlanSenior.Controllers
         public async Task<IActionResult> AddComment(Comment comment)
         {
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (!ModelState.IsValid) return Json(StatusCode(400));
+            if (!ModelState.IsValid) return View();
             if (!_context.Events.Any(f => f.Id == comment.EventId))
             {
                 return NotFound();
@@ -73,15 +73,9 @@ namespace BackendProjectNurlanSenior.Controllers
             };
             _context.Comments.Add(cmnt);
             _context.SaveChanges();
-            //return RedirectToAction("Index", "Home");
+            
             return RedirectToAction("Details", "Event", new { id = cmnt.EventId });
 
-            //CourseVM course = new CourseVM
-            //{
-            //    Course = _context.Courses.Include(c=>c.Comments).ThenInclude(c=>c.AppUser).FirstOrDefault()
-            //};
-            //return PartialView("_CommentPartialView",course);
-            //return View();
         }
 
         public async Task<IActionResult> DeleteComment(int id)

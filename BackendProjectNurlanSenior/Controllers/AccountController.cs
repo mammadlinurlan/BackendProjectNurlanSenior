@@ -71,6 +71,7 @@ namespace BackendProjectNurlanSenior.Controllers
                 ModelState.AddModelError("", "This username already taken");
                 return View();
             }
+            await _userManager.AddToRoleAsync(user, "Member");
 
             string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             string link = Url.Action(nameof(VerifyEmail), "Account", new { email = user.Email, token }, Request.Scheme, Request.Host.ToString());

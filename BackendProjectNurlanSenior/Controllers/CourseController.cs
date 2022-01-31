@@ -77,7 +77,11 @@ namespace BackendProjectNurlanSenior.Controllers
 
         public IActionResult Search(string Name)
         {
-            List<Course> courses = _context.Courses.Where(c => c.Name.ToLower().Contains(Name.ToLower())).ToList();
+           
+
+            List<Course> courses = Name==null ? _context.Courses.ToList() : _context.Courses.Where(c => c.Name.ToLower().Contains(Name.ToLower())).ToList();
+
+
             return View(courses);
         }
 

@@ -1,0 +1,78 @@
+﻿@model Teacher
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-3">
+    <h1 class="text text-success">Create teacher</h1>
+    <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+    <form method="post" class="mt-2" enctype="multipart/form-data">
+        <div class="mb-2">
+            <label asp-for="@Model.ImageFile" class="form-label">Teacher image</label>
+            <input asp-for="@Model.ImageFile" accept="image/*" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.ImageFile"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Fullname" class="form-label">Fullname</label>
+            <input asp-for="@Model.Fullname" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Fullname"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.About" class="form-label">About teacher</label>
+            <input asp-for="@Model.About" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.About"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Degree" class="form-label">Degree</label>
+            <input asp-for="@Model.Degree" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Degree"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Email" class="form-label">Email</label>
+            <input asp-for="@Model.Email" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Email"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Experience" class="form-label">Experience</label>
+            <input asp-for="@Model.Experience" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Experience"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Phone" class="form-label">Phone</label>
+            <input asp-for="@Model.Phone" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Phone"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Skype" class="form-label">Skype</label>
+            <input asp-for="@Model.Skype" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Skype"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Faculty" class="form-label">Faculty</label>
+            <input asp-for="@Model.Faculty" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Faculty"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Speciality" class="form-label">Speciality</label>
+            <input asp-for="@Model.Speciality" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Speciality"></span>
+        </div>
+      
+        <div class="mb-2">
+            <label asp-for="@Model.HobbyIds" class="form-label">Hobbies</label>
+            <select asp-for="@Model.HobbyIds" class="form-select" asp-items="@(new SelectList(ViewBag.Hobbies,"Id","Name"))">
+                
+            </select>
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.HobbyIds"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
+
+

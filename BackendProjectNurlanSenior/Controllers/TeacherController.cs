@@ -18,10 +18,11 @@ namespace BackendProjectNurlanSenior.Controllers
             _context = context;
 
         }
-        public IActionResult Index()
+        public IActionResult Index(int page=1)
         {
-
-            List<Teacher> teachers = _context.Teachers.Include(t=>t.SocialMedias).ToList();
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Teachers.Count() / 4);
+            List<Teacher> teachers = _context.Teachers.Include(t=>t.SocialMedias).Skip((page-1)*4).Take(4).ToList();
 
             return View(teachers);
         }

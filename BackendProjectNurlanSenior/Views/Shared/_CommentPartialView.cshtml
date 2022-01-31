@@ -4,17 +4,21 @@
 @model CourseVM
 @foreach (Comment item in Model.Course.Comments)
 {
-    <h5>@item.AppUser.Fullname</h5>
-    <span>@item.CreatedTime</span>
-
-    <span><strong>@item.Subject</strong></span>
-    <br />
-    <input type="hidden" value="@item.Id" id="hiddenId" />
-
-    <p>@item.Message</p>
-    @if (item.AppUser.UserName == User.Identity.Name)
+    if (item.IsAccepted == true)
     {
-        <a asp-controller="course" asp-action="DeleteComment" asp-route-id="@item.Id" id="deleteCmt" style="text-decoration:none" class="text text-danger">DELETE</a>
+        <h5>@item.AppUser.Fullname</h5>
+        <span>@item.CreatedTime</span>
+
+        <span><strong>@item.Subject</strong></span>
+        <br />
+        <input type="hidden" value="@item.Id" id="hiddenId" />
+
+        <p>@item.Message</p>
+        @if (item.AppUser.UserName == User.Identity.Name)
+        {
+            <a asp-controller="course" asp-action="DeleteComment" asp-route-id="@item.Id"  style="text-decoration:none" class="text text-danger deleteCmt">DELETE</a>
+        }
     }
+
 
 }

@@ -1,0 +1,100 @@
+﻿@model LoginVM
+@{
+    Layout = "";
+}
+@{
+    ViewData["Title"] = "Login";
+}
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<!-- Mirrored from demo.devitems.com/eduhome/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jun 2020 19:37:50 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Eduhome - Educational HTML Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="~/assets/apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <link rel="stylesheet" href="~/assets/css/meanmenu.css">
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/et-line-icon.css">
+    <link rel="stylesheet" href="~/assets/css/reset.css">
+    <link rel="stylesheet" href="~/assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/assets/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script src="~/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+
+
+@*<div class="banner-area-wrapper">
+        <div class="banner-area text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="banner-content-wrapper">
+                            <div class="banner-content">
+                                <h2>login</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<!-- Banner Area End -->
+<!-- Login start -->
+<body>
+    <div class="login-area pt-150 pb-150">
+        <div class="container">
+            <div class="row">
+                <div class="  text-center">
+                    <div class="login">
+                        <div class="login-form-container">
+                            <div class="login-text">
+                                <h2>admin login</h2>
+                                <span>Please login using account detail bellow.</span>
+                            </div>
+                            <div class="login-form">
+                                <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+
+                                <form method="post">
+                                    <input asp-for="Username" placeholder="Username"><br />
+                                    <span asp-validation-for="Username" class="text text-danger"></span>
+
+
+                                    <input asp-for="Password" placeholder="Password"><br />
+                                    <span asp-validation-for="Password" class="text text-danger"></span>
+
+
+                                    <div class="button-box">
+                                        <div class="login-toggle-btn">
+                                            <input asp-for="RememberMe">
+                                            <label for="remember">Remember me</label>
+                                            @*<a asp-controller="account" asp-action="forgotpassword">Forgot Password?</a>*@
+                                        </div>
+                                        <button type="submit" class="default-btn">Login</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!-- Login end -->
+<!-- Subscribe Start -->

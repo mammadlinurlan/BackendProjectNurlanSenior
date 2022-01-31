@@ -1,0 +1,92 @@
+﻿@model BlogVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="banner-area-wrapper">
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>blog / right side bar</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Area End -->
+<!-- Blog Start -->
+<div class="blog-area blog-area three text-center pt-150 pb-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    @await Html.PartialAsync("_blogPartialView", Model)
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-sidebar right text-left">
+                    <div class="single-blog-widget mb-50">
+                        <h3>search</h3>
+                        <div class="blog-search">
+                            <form method="get" asp-action="searchresult" asp-controller="blog">
+                                <input type="text" id="Name" placeholder="Search..." name="Name" />
+                                <button type="submit">
+                                    <span><i class="fa fa-search"></i></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    @*<div class="single-blog-widget mb-50">
+                            <h3>categories</h3>
+                            <ul>
+                                <li><a href="#">CSS Engineering (10)</a></li>
+                                <li><a href="#">Political Science (12)</a></li>
+                                <li><a href="#">Micro Biology (08)</a></li>
+                                <li><a href="#">HTML5 &amp; CSS3 (15)</a></li>
+                                <li><a href="#">Web Design (20)</a></li>
+                                <li><a href="#">PHP (23)</a></li>
+                            </ul>
+                        </div>*@
+                    <div class="single-blog-widget mb-50">
+                        <div class="single-blog-banner">
+                            <a href="blog-details.html" id="blog"><img src="~/assets/img/blog/blog-img.jpg" alt="blog"></a>
+                            <h2>best<br> eductaion<br> theme</h2>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <h3>latest post</h3>
+                        @foreach (Blog item in Model.Blogs.OrderByDescending(e => e.Id).Take(3))
+                        {
+                            <div class="single-post mb-40">
+                                <div class="single-post-img">
+                                    <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id">
+                                        <img style="width:95px;height:75px;" src="~/assets/img/blog/@item.Image" alt="post">
+                                        <div class="blog-hover">
+                                            <i class="fa fa-link"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="single-post-content">
+                                    <h4><a asp-controller="blog" asp-action="details" asp-route-id="@item.Id">@item.Name</a></h4>
+                                    <p>@item.CreatedTime.ToString("dd MMMM yyyy")</p>
+                                </div>
+                            </div>
+
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog End -->
+<!-- Subscribe Start -->

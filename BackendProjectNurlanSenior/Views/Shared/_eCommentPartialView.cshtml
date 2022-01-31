@@ -4,19 +4,23 @@
 @model EventVM
 @foreach (Comment item in Model.Event.Comments)
 {
-<div id="commentdiv">
-    <h5>@item.AppUser.Fullname</h5>
-    <span>@item.CreatedTime</span>
-
-    <span><strong>@item.Subject</strong></span>
-    <br />
-    <input type="hidden" value="@item.Id" id="hiddenId" />
-    <p>@item.Message</p>
-    @if (item.AppUser.UserName == User.Identity.Name)
+    if (item.IsAccepted == true)
     {
-        <a asp-controller="event" asp-action="DeleteComment" asp-route-id="@item.Id" id="deleteCmt" style="text-decoration:none" class="text text-danger">DELETE</a>
+        <div id="commentdiv">
+            <h5>@item.AppUser.Fullname</h5>
+            <span>@item.CreatedTime</span>
+
+            <span><strong>@item.Subject</strong></span>
+            <br />
+            <input type="hidden" value="@item.Id" id="hiddenId" class="hiddenClass" />
+            <p>@item.Message</p>
+            @if (item.AppUser.UserName == User.Identity.Name)
+            {
+                <a   style="text-decoration:none" class="text text-danger deleteCmt">DELETE</a>
+            }
+
+        </div>
+
     }
 
-</div>
-   
 }

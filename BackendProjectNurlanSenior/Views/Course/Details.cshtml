@@ -83,6 +83,7 @@
                         }
                         <div id="addedComments">
                             <h2>COMMENTS</h2><br />
+                            
                             @await Html.PartialAsync("_CommentPartialView", Model)
                         </div>
                     </div>
@@ -96,7 +97,8 @@
 
                             <form method="get" asp-action="search" asp-controller="course">
                                 <div class="form-holder">
-                                    <input type="text" placeholder="Search" id="Name" name="Name" autocomplete="off">
+                                    <input required type="text" placeholder="Search" id="Name" name="Name" autocomplete="off">
+                                   
                                     <button type="submit">
                                         <span><i class="fa fa-search"></i></span>
                                     </button>
@@ -198,7 +200,7 @@
 @section Scripts{
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $("#deleteCmt").click(function (e) {
+        $(".deleteCmt").click(function (e) {
             e.preventDefault()
             Swal.fire({
                 title: 'Are you sure?',
@@ -210,8 +212,8 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var value = $("#hiddenId").val();
-                    var url = '/Event/DeleteComment?id=' + value;
+                    var value = $(this).prev().prev().val()
+                    var url = '/Course/DeleteComment?id=' + value;
 
 
                     fetch(url).then(response => response.json()).then(data => {

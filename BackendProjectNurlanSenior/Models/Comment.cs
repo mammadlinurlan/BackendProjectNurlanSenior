@@ -25,5 +25,9 @@ namespace BackendProjectNurlanSenior.Models
         public Course Course { get; set; }
         public int? EventId { get; set; }
         public Event Event { get; set; }
+
+        public int? BlogId { get; set; }
+
+        public Blog Blog { get; set; }
     }
 }

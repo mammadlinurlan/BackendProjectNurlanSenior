@@ -131,45 +131,14 @@
         </div>
     </div>
 </div>
-<!-- Event Details End -->
-<!-- Subscribe Start -->
 
-@*@section Scripts{
-    <script>
-        $(document).ready(function () {
-            $("#deleteCmt").click(function (e) {
-                e.preventDefault();
-                var value = $("#hiddenId").val();
-                var url = '/Event/DeleteComment?id=' + value;
-                console.log(url);
-
-                $.ajax({
-                    url: '/Event/DeleteComment?id=' + value,
-                    type: "Get",
-                    success: function (res) {
-
-                        console.log($(res).)
-                    }
-                });
-
-                //fetch(url).then(res => res.json()).then(data => {
-                //    if (true) {
-
-                //    }
-                //    $(data).remove();
-                //    //location.reload();
-                //})
-
-
-            })
-        })
-    </script>
-}*@
 
 @section Scripts{
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $("#deleteCmt").click(function (e) {
+        $(".deleteCmt").click(function (e) {
+            
+            
             e.preventDefault()
             Swal.fire({
                 title: 'Are you sure?',
@@ -181,9 +150,10 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var value = $("#hiddenId").val();
+                   
+                    var value = $(this).prev().prev().val()
                     var url = '/Event/DeleteComment?id=' + value;
-
+                    console.log(url)
                     
                     fetch(url).then(response => response.json()).then(data => {
                         console.log(data.status)
@@ -203,5 +173,6 @@
             })
         })
     </script>
+       
 }
 

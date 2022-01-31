@@ -49,6 +49,8 @@ namespace BackendProjectNurlanSenior.Dal
 
         public DbSet<ContactMessage> ContactMessages { get; set; }
 
+        public DbSet<Blog> Blogs { get; set; }
+
 
 
     }
