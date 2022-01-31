@@ -4,14 +4,16 @@ using BackendProjectNurlanSenior.Dal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackendProjectNurlanSenior.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220131111149_socialAddedToTeacher")]
+    partial class socialAddedToTeacher
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,11 +100,11 @@ namespace BackendProjectNurlanSenior.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Author")
+                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("BlackQuote")
-                        .IsRequired()
                         .HasColumnType("nvarchar(350)")
                         .HasMaxLength(350);
 
@@ -110,7 +112,6 @@ namespace BackendProjectNurlanSenior.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
@@ -118,7 +119,6 @@ namespace BackendProjectNurlanSenior.Migrations
                         .HasMaxLength(120);
 
                     b.Property<string>("LeaveReply")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

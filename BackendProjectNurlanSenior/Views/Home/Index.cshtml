@@ -13,7 +13,7 @@
 }
 
 <section id="slider-container" class="slider-area two">
-   
+
     <div class="slider-owl owl-theme owl-carousel">
         <!-- Start Slingle Slide -->
         @foreach (Slider slider in Model.Sliders)
@@ -46,7 +46,6 @@
 </section>
 <!-- Background Area End -->
 <!-- Service Start -->
-
 <!-- Service End -->
 <!-- About Start -->
 <div class="about-area pb-155">
@@ -80,58 +79,58 @@
             </div>
         </div>
         <div class="row">
-            @await Html.PartialAsync("_CoursePartialView",Model.Courses)
+            @await Html.PartialAsync("_CoursePartialView", Model.Courses)
             @*<div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html">
-                            <img src="~/assets/img/course/course1.jpg" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="course-details.html">CSE ENGINEERING</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a class="default-btn" href="course-details.html">read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html">
-                            <img src="~/assets/img/course/course2.jpg" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="course-details.html">political science</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a class="default-btn" href="course-details.html">read more</a>
+                    <div class="single-course">
+                        <div class="course-img">
+                            <a href="course-details.html">
+                                <img src="~/assets/img/course/course1.jpg" alt="course">
+                                <div class="course-hover">
+                                    <i class="fa fa-link"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="course-content">
+                            <h3><a href="course-details.html">CSE ENGINEERING</a></h3>
+                            <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
+                            <a class="default-btn" href="course-details.html">read more</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 hidden-sm col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html">
-                            <img src="~/assets/img/course/course3.jpg" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="course-details.html">micro biology</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a class="default-btn" href="course-details.html">read more</a>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-course">
+                        <div class="course-img">
+                            <a href="course-details.html">
+                                <img src="~/assets/img/course/course2.jpg" alt="course">
+                                <div class="course-hover">
+                                    <i class="fa fa-link"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="course-content">
+                            <h3><a href="course-details.html">political science</a></h3>
+                            <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
+                            <a class="default-btn" href="course-details.html">read more</a>
+                        </div>
                     </div>
                 </div>
-            </div>*@
+                <div class="col-md-4 hidden-sm col-xs-12">
+                    <div class="single-course">
+                        <div class="course-img">
+                            <a href="course-details.html">
+                                <img src="~/assets/img/course/course3.jpg" alt="course">
+                                <div class="course-hover">
+                                    <i class="fa fa-link"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="course-content">
+                            <h3><a href="course-details.html">micro biology</a></h3>
+                            <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
+                            <a class="default-btn" href="course-details.html">read more</a>
+                        </div>
+                    </div>
+                </div>*@
         </div>
     </div>
 </div>
@@ -156,7 +155,7 @@
                 <div class="notice-left-wrapper">
                     <h3>notice board</h3>
                     <div class="notice-left">
-                       @await Html.PartialAsync("_noticePartialView",Model)
+                        @await Html.PartialAsync("_noticePartialView", Model)
 
                     </div>
                 </div>
@@ -272,66 +271,38 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="~/assets/img/blog/blog1.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
+           
+            @foreach (Blog item in Model.Blogs.OrderByDescending(b => b.Id).Take(3))
+            {
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="single-blog mt-60 mb-60">
+                        <div class="blog-img">
+                            <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id"><img style="height:250px" src="~/assets/img/blog/@item.Image" alt="blog"></a>
+                            <div class="blog-hover">
+                                <i class="fa fa-link"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="~/assets/img/blog/blog2.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
+                        <div class="blog-content">
+                            <div class="blog-top">
+                                <p>By @item.Author  /  @item.CreatedTime.ToString("dd MMMM yyyy")  /  <i class="fa fa-comments-o"></i> @item.Comments.Where(c => c.IsAccepted == true).Count()</p>
+                            </div>
+                            <div class="blog-bottom">
+                                <h2><a asp-controller="blog" asp-action="details" asp-route-id="@item.Id">@item.Name</a></h2>
+                                <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id">read more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 hidden-sm col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="~/assets/img/blog/blog3.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            }
         </div>
     </div>
 </div>
+
+
+
+
+
 <!-- Blog Area End -->
 <!-- Subscribe Start -->
 

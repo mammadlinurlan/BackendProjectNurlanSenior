@@ -48,6 +48,36 @@
             <span class="mt-2 text text-danger" asp-validation-for="@Model.Skype"></span>
         </div>
         <div class="mb-2">
+            <label asp-for="@Model.Fblink" class="form-label">Facebook url</label>
+            <input asp-for="@Model.Fblink" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Fblink"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Instalink" class="form-label">Instagram url</label>
+            <input asp-for="@Model.Instalink" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Instalink"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Vimeolink" class="form-label">Vimeo url</label>
+            <input asp-for="@Model.Vimeolink" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Vimeolink"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.PinterestLink" class="form-label">Pinterest url</label>
+            <input asp-for="@Model.PinterestLink" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.PinterestLink"></span>
+        </div>
+        @*<div class="mb-2">
+            <label asp-for="@Model.SocialMedias.FirstOrDefault().Link" class="form-label">Facebook link : example : https://fb.com</label>
+            <input asp-for="@Model.SocialMedias.FirstOrDefault().Link class=" form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.SocialMedias.FirstOrDefault().Link"></span>
+        </div>*@
+        @*<div class="mb-2">
+            <label asp-for="@Model.SocialMedias.FirstOrDefault().Link" class="form-label">Facebook link :</label>
+            <input asp-for="@Model.SocialMedias.FirstOrDefault().Link" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.SocialMedias.FirstOrDefault().Link"></span>
+        </div>*@
+        <div class="mb-2">
             <label asp-for="@Model.Faculty" class="form-label">Faculty</label>
             <input asp-for="@Model.Faculty" class="form-control">
             <span class="mt-2 text text-danger" asp-validation-for="@Model.Faculty"></span>
@@ -57,11 +87,10 @@
             <input asp-for="@Model.Speciality" class="form-control">
             <span class="mt-2 text text-danger" asp-validation-for="@Model.Speciality"></span>
         </div>
-      
+
         <div class="mb-2">
             <label asp-for="@Model.HobbyIds" class="form-label">Hobbies</label>
             <select asp-for="@Model.HobbyIds" class="form-select" asp-items="@(new SelectList(ViewBag.Hobbies,"Id","Name"))">
-                
             </select>
             <span class="mt-2 text text-danger" asp-validation-for="@Model.HobbyIds"></span>
         </div>

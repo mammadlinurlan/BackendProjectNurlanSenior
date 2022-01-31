@@ -12,7 +12,7 @@
             </div>
             <div class="blog-content">
                 <div class="blog-top">
-                    <p>By @item.Author  /  @item.CreatedTime.ToString("dd MMMM yyyy")  /  <i class="fa fa-comments-o"></i> @item.Comments.Count()</p>
+                    <p>By @item.Author  /  @item.CreatedTime.ToString("dd MMMM yyyy")  /  <i class="fa fa-comments-o"></i> @item.Comments.Where(c=>c.IsAccepted==true).Count()</p>
                 </div>
                 <div class="blog-bottom">
                     <h2><a asp-controller="blog" asp-action="details" asp-route-id="@item.Id" >@item.Name</a></h2>

@@ -21,7 +21,7 @@ namespace BackendProjectNurlanSenior.Controllers
         {
             AboutVM about = new AboutVM
             {
-                Teachers = _context.Teachers.Include(t=>t.SocialMedias).Take(4).ToList(),
+                Teachers = _context.Teachers.Take(4).ToList(),
                 NoticeBoard = _context.NoticeBoards.FirstOrDefault(),
                 NoticeBoards = _context.NoticeBoards.ToList(),
                 WelcomeEdu = _context.WelcomeEdus.FirstOrDefault()

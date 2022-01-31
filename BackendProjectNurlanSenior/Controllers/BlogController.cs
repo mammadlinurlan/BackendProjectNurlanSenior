@@ -21,11 +21,16 @@ namespace BackendProjectNurlanSenior.Controllers
             _userManager = userManager;
 
         }
-        public IActionResult Index()
+        public IActionResult Index(int page=1)
         {
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Blogs.Count() / 4);
+
+
             BlogVM blogVM = new BlogVM
             {
-                Blogs = _context.Blogs.Include(b=>b.Comments).ToList(),
+
+                Blogs = _context.Blogs.Include(b=>b.Comments).Skip((page-1)*4).Take(4).ToList(),
                 Blog = _context.Blogs.Include(b=>b.Comments).FirstOrDefault()
 
             };

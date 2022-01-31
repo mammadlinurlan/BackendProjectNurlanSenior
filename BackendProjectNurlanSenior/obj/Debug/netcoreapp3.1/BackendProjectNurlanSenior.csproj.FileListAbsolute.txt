@@ -200,3 +200,6 @@ C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSen
 C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Teacher\Index.cshtml.g.cs
 C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Teacher\Create.cshtml.g.cs
 C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Teacher\Edit.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Blog\Index.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Blog\Create.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Blog\Edit.cshtml.g.cs

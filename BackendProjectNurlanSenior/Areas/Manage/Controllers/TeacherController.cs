@@ -29,7 +29,7 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
             ViewBag.CurrentPage = page;
             ViewBag.TotalPage = Math.Ceiling((decimal)_context.Teachers.Count() / 4);
 
-            List<Teacher> teachers = _context.Teachers.Include(t => t.TeacherHobbies).ThenInclude(th => th.Teacher).Include(t => t.SocialMedias).Skip((page-1)*4).Take(4).ToList();
+            List<Teacher> teachers = _context.Teachers.Include(t => t.TeacherHobbies).ThenInclude(th => th.Teacher).Skip((page-1)*4).Take(4).ToList();
             return View(teachers);
         }
 
@@ -40,17 +40,29 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
 
             return View();
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
+
         public IActionResult Create(Teacher teacher)
         {
-          
+
             ViewBag.Hobbies = _context.Hobbies.ToList();
             if (!ModelState.IsValid) return View();
+            //teacher.SocialMedias.FirstOrDefault().Link= 
 
             teacher.TeacherHobbies = new List<TeacherHobbies>();
+
+            //teacher.SocialMedias = new List<SocialMedia>();
+            //return Json(teacher.SocialMedias)
+            //SocialMedia socialMedia = new SocialMedia
+            //{
+            //    Link = teacher.SocialMedias.FirstOrDefault().Link,
+            //    Teacher = teacher
+            //};
+            //teacher.SocialMedias.Add(socialMedia);
+
+
             if (teacher.ImageFile == null)
             {
                 ModelState.AddModelError("ImageFile", "Select image please!");
@@ -69,28 +81,28 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
                 return View();
 
             }
-            if (teacher.HobbyIds == null)
+            if (teacher.HobbyIds != null)
             {
-                ModelState.AddModelError("HobbyIds", "Select an hobby!");
-                return View();
-            }
-            foreach (int item in teacher.HobbyIds)
-            {
-                TeacherHobbies hobbies = new TeacherHobbies
+                foreach (int item in teacher.HobbyIds)
                 {
-                    Teacher = teacher,
-                    HobbyId = item
-                };
-                teacher.TeacherHobbies.Add(hobbies);
+                    TeacherHobbies hobbies = new TeacherHobbies
+                    {
+                        Teacher = teacher,
+                        HobbyId = item
+                    };
+                    teacher.TeacherHobbies.Add(hobbies);
 
+                }
             }
-            
+         
+
            
 
             teacher.Image = teacher.ImageFile.SaveImg(_env.WebRootPath, "assets/img/teacher");
             _context.Teachers.Add(teacher);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
+            //return Content(teacher.TeacherHobbies.FirstOrDefault().ToString());
         }
 
         public IActionResult Edit(int id)
@@ -186,6 +198,10 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
             existedTeacher.Phone = teacher.Phone;
             existedTeacher.Skype = teacher.Skype;
             existedTeacher.Speciality = teacher.Speciality;
+            existedTeacher.Fblink = teacher.Fblink;
+            existedTeacher.PinterestLink = teacher.PinterestLink;
+            existedTeacher.Instalink = teacher.Instalink;
+            existedTeacher.Vimeolink = teacher.Vimeolink;
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
 

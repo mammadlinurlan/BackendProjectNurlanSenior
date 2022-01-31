@@ -63,14 +63,22 @@ namespace BackendProjectNurlanSenior.Models
 
         public string Image { get; set; }
 
-        public List<SocialMedia> SocialMedias { get; set; }
+        //public List<SocialMedia> SocialMedias { get; set; }
 
         [NotMapped]
         public IFormFile  ImageFile { get; set; }
 
         [NotMapped]
-        [Required]
+        //[Required]
         public List<int>  HobbyIds { get; set; }
+
+        public string Fblink { get; set; }
+        public string Instalink { get; set; }
+
+        public string Vimeolink { get; set; }
+
+        public string PinterestLink { get; set; }
+
 
 
     }

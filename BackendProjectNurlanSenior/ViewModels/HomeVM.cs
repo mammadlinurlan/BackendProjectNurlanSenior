@@ -16,6 +16,7 @@ namespace BackendProjectNurlanSenior.ViewModels
 
         public List<NoticeBoard> NoticeBoards { get; set; }
 
+        public List<Blog> Blogs { get; set; }
         public List<Event> Events { get; set; }
     }
 }

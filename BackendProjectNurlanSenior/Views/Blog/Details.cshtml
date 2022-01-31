@@ -36,7 +36,7 @@
                     <div class="blog-details-content">
                         <h2>@Model.Blog.Name</h2>
                         <h6>
-                            By @Model.Blog.Author  /  @Model.Blog.CreatedTime.ToString("dd MMMM yyyy")  /  <i class="fa fa-comments-o"></i> @Model.Blog.Comments.Count()
+                            By @Model.Blog.Author  /  @Model.Blog.CreatedTime.ToString("dd MMMM yyyy")  /  <i class="fa fa-comments-o"></i> @Model.Blog.Comments.Where(c=>c.IsAccepted==true).Count()
                         </h6>
                         <p>@Model.Blog.Description</p>
 

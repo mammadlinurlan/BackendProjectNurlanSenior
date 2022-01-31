@@ -11,10 +11,38 @@
                 <h2><a asp-controller="teacher" asp-action="details" asp-route-id="@teacher.Id">@teacher.Fullname</a></h2>
                 <h4>@teacher.Speciality</h4>
                 <ul>
-                    @foreach (var social in teacher.SocialMedias)
+
+                    @if (Model.FirstOrDefault().Fblink != null)
                     {
-                        <li><a href="@social.Link"><i class="@social.Logo"></i></a></li>
+                        <li><a href="@Model.FirstOrDefault().Fblink"><i class="zmdi zmdi-facebook"></i></a></li>
+
                     }
+                    @if (Model.FirstOrDefault().Instalink != null)
+                    {
+                        <li><a href="@Model.FirstOrDefault().Instalink"><i class="zmdi zmdi-instagram"></i></a></li>
+
+                    }
+                    @if (Model.FirstOrDefault().Vimeolink != null)
+                    {
+                        <li><a href="@Model.FirstOrDefault().Vimeolink"><i class="zmdi zmdi-vimeo"></i></a></li>
+
+                    }
+                    @if (Model.FirstOrDefault().PinterestLink != null)
+                    {
+                        <li><a href="@Model.FirstOrDefault().PinterestLink"><i class="zmdi zmdi-pinterest"></i></a></li>
+
+                    }
+
+
+
+
+
+
+
+
+
+
+
 
 
                 </ul>

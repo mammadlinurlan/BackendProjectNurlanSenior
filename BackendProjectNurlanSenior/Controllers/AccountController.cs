@@ -134,7 +134,11 @@ namespace BackendProjectNurlanSenior.Controllers
                 ModelState.AddModelError("", "username or password is incorrect");
                 return View();
             }
-
+            if (user.IsAdmin==true)
+            {
+                ModelState.AddModelError("", "username or password is incorrect");
+                return View();
+            }
             Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(user.UserName, login.Password,login.RememberMe, true);
 
             if (!result.Succeeded)
