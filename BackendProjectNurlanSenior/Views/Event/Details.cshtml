@@ -44,7 +44,7 @@
                             {
                                 <div class="single-speaker">
                                     <div class="speaker-img">
-                                        <img src="~/assets/img/event/@item.Image" alt="speaker">
+                                        <img style="width:90px;height:78px" src="~/assets/img/event/@item.Image" alt="speaker">
                                     </div>
                                     <div class="speaker-name">
                                         <h5>@item.Name</h5>
@@ -171,6 +171,34 @@
                     );
                 }
             })
+        })
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1) {
+                    return true;
+                }
+            }
+
+            $("#Name").keyup(function () {
+                var searchText = $("#Name").val().toLowerCase();
+                $(".single-event").each(function () {
+                    if (!Contains($(this).text().toLowerCase(), searchText)) {
+
+                        $(this).hide()
+
+                    }
+                    else {
+                        $(this).show()
+                    }
+                })
+            })
+
+
+
         })
     </script>
        

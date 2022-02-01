@@ -299,12 +299,10 @@ namespace BackendProjectNurlanSenior.Migrations
                         .HasMaxLength(450);
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
                     b.Property<string>("LeaveReply")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)")
                         .HasMaxLength(450);
 
@@ -366,7 +364,6 @@ namespace BackendProjectNurlanSenior.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -491,10 +488,12 @@ namespace BackendProjectNurlanSenior.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Answer")
+                        .IsRequired()
                         .HasColumnType("nvarchar(350)")
                         .HasMaxLength(350);
 
                     b.Property<string>("Question")
+                        .IsRequired()
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
@@ -655,7 +654,6 @@ namespace BackendProjectNurlanSenior.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(120)")
                         .HasMaxLength(120);
 

@@ -10,7 +10,9 @@ namespace BackendProjectNurlanSenior.Models
     {
         public int Id { get; set; }
         [StringLength(maximumLength:150)]
+        [Required]
         public string Question { get; set; }
+        [Required]
         [StringLength(maximumLength: 350)]
 
         public string Answer { get; set; }

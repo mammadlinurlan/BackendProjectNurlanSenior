@@ -21,6 +21,12 @@
     <Compile Remove="Migrations\20220128065826_courseCategoryRelation.Designer.cs" />
     <Compile Remove="Migrations\20220128070428_mgmg.cs" />
     <Compile Remove="Migrations\20220128070428_mgmg.Designer.cs" />
+    <Compile Remove="Migrations\20220201112941_updateFeature.cs" />
+    <Compile Remove="Migrations\20220201112941_updateFeature.Designer.cs" />
+    <Compile Remove="Migrations\20220201113135_updateFeature.cs" />
+    <Compile Remove="Migrations\20220201113135_updateFeature.Designer.cs" />
+    <Compile Remove="Migrations\20220201121944_updateFeature.cs" />
+    <Compile Remove="Migrations\20220201121944_updateFeature.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

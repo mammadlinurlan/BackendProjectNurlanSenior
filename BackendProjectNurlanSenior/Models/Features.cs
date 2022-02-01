@@ -10,7 +10,7 @@ namespace BackendProjectNurlanSenior.Models
     {
         public int Id { get; set; }
         [Required]
-      
+        [DataType(DataType.Date)]
         public DateTime StartTime { get; set; }
 
         [Required]

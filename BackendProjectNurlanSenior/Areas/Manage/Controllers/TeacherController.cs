@@ -107,7 +107,7 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
 
         public IActionResult Edit(int id)
         {
-            ViewBag.Hobbies = _context.Hobbies.ToList();
+            ViewBag.Hobbies = _context.Hobbies.Include(h=>h.TeacherHobbies).ThenInclude(th=>th.Teacher).ToList();
 
             Teacher teacher = _context.Teachers.Include(t => t.TeacherHobbies).ThenInclude(th => th.Hobby).FirstOrDefault(t => t.Id == id);
             if (teacher==null)
@@ -121,8 +121,9 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Teacher teacher)
         {
-            ViewBag.Hobbies = _context.Hobbies.ToList();
-          
+            ViewBag.Hobbies = _context.Hobbies.Include(h => h.TeacherHobbies).ThenInclude(th => th.Teacher).ToList();
+
+
             if (!ModelState.IsValid)
             {
                 return View(teacher);
@@ -135,6 +136,7 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
                 return NotFound();
             }
            
+
 
             if (teacher.ImageFile != null)
             {
@@ -154,38 +156,36 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
 
 
             }
-            //else
-            //{
-            //    ModelState.AddModelError("ImageFile", "Select an image");
-            //}
+          
+        
 
-            List<TeacherHobbies> removableHobbies = existedTeacher.TeacherHobbies.Where(th => !teacher.HobbyIds.Contains(th.HobbyId)).ToList();
-            existedTeacher.TeacherHobbies.RemoveAll(t => removableHobbies.Any(r => r.Id == t.Id));
-
-            foreach (var item in teacher.HobbyIds)
+            if (teacher.HobbyIds != null)
             {
-                TeacherHobbies teacherHobby = existedTeacher.TeacherHobbies.FirstOrDefault(th => th.HobbyId == item);
-
-                if (teacherHobby == null)
+               
+                foreach (var item in teacher.HobbyIds)
                 {
-                    TeacherHobbies hobbies = new TeacherHobbies
+                    TeacherHobbies teacherHobby = existedTeacher.TeacherHobbies.FirstOrDefault(th => th.HobbyId == item);
+
+                    if (teacherHobby == null)
                     {
-                        HobbyId = item,
-                        TeacherId = existedTeacher.Id
-                    };
+                        TeacherHobbies hobbies = new TeacherHobbies
+                        {
+                            HobbyId = item,
+                            TeacherId = existedTeacher.Id
+                        };
 
-                    existedTeacher.TeacherHobbies.Add(hobbies);
+                       
+                        existedTeacher.TeacherHobbies.Add(hobbies);
+                    }
                 }
-            }
 
-            if (teacher.HobbyIds == null)
+
+            }
+            else
             {
-                ModelState.AddModelError("HobbyIds", "Select 1 hobby least");
-                return View(teacher);
+                var selectedHobbies = _context.TeacherHobbies.Where(n => n.TeacherId == existedTeacher.Id);
+                _context.TeacherHobbies.RemoveRange(selectedHobbies);
             }
-
-
-
 
 
 

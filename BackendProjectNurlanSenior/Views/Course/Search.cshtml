@@ -52,6 +52,38 @@
         </div>
     </div>
 </div>
+@section Scripts{
+
+
+    <script>
+          $(document).ready(function () {
+
+              function Contains(text_one, text_two) {
+                  if (text_one.indexOf(text_two) != -1) {
+                      return true;
+                  }
+              }
+
+              $("#Name").keyup(function () {
+                  var searchText = $("#Name").val().toLowerCase();
+                  $(".courseForSearch").each(function () {
+                      if (!Contains($(this).text().toLowerCase(), searchText)) {
+
+                          $(this).hide()
+
+                      }
+                      else {
+                          $(this).show()
+                      }
+                  })
+              })
+
+
+
+          })
+    </script>
+
+
+}
 <!-- Course End -->
 <!-- Subscribe Start -->
-

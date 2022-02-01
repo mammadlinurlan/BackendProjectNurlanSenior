@@ -1,0 +1,132 @@
+﻿@model CourseFeatureVM
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container mt-3">
+    <h1 class="text text-success">Edit course</h1>
+    <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <h2>Current image</h2>
+        <img style="width:100px" src="~/assets/img/course/@Model.Course.Image"  />
+    </div>
+    <form method="post" class="mt-2" enctype="multipart/form-data">
+        <div class="mb-2">
+            <label asp-for="@Model.Course.ImageFile" class="form-label">Course image</label>
+            <input asp-for="@Model.Course.ImageFile" accept="image/*" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Course.ImageFile"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Course.Name" class="form-label">Name</label>
+            <input asp-for="@Model.Course.Name" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Course.Name"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Course.Description" class="form-label">Description</label>
+            <input asp-for="@Model.Course.Description" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Course.Description"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Course.About" class="form-label">About</label>
+            <input asp-for="@Model.Course.About" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Course.About"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Course.Certification" class="form-label">Certification</label>
+            <input asp-for="@Model.Course.Certification" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Course.Certification"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Course.HowToApply" class="form-label">How to apply</label>
+            <input asp-for="@Model.Course.HowToApply" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Course.HowToApply"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Course.LeaveReply" class="form-label">Leave a reply</label>
+            <input asp-for="@Model.Course.LeaveReply" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Course.LeaveReply"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Course.LinkLogo" class="form-label">Logo`s link</label>
+            <input asp-for="@Model.Course.LinkLogo" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Course.LinkLogo"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Course.CCategoryId" class="form-label">Category</label>
+            <select asp-for="@Model.Course.CCategoryId" class="form-select" asp-items="@(new SelectList(ViewBag.CategoryIds,"Id","Name"))">
+                <option value="0">Select category</option>
+            </select>
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Course.CCategoryId"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Course.TagIds" class="form-label">Tags</label>
+            <select asp-for="@Model.Course.TagIds" class="form-select" asp-items="@(new SelectList(ViewBag.TagIds,"Id","Name"))">
+                @foreach (var tag in ViewBag.TagIds)
+                {
+                    if (Model.Course.CourseTags.FirstOrDefault(fc => fc.TagId == tag.Id) != null)
+                    {
+                        <option value="@tag.Id" selected>@tag.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@tag.Id">@tag.Name</option>
+
+                    }
+                }
+            </select>
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Course.TagIds"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Feature.StartTime" class="form-label">Start time</label>
+            <input asp-for="@Model.Feature.StartTime" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Feature.StartTime"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Feature.Duration" class="form-label">Duration</label>
+            <input asp-for="@Model.Feature.Duration" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Feature.Duration"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Feature.ClassDuration" class="form-label">Class duration</label>
+            <input asp-for="@Model.Feature.ClassDuration" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Feature.ClassDuration"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Feature.SkillLevel" class="form-label">Skill level</label>
+            <input asp-for="@Model.Feature.SkillLevel" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Feature.SkillLevel"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Feature.Language" class="form-label">Language</label>
+            <input asp-for="@Model.Feature.Language" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Feature.Language"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Feature.Assesments" class="form-label">Assesments</label>
+            <input asp-for="@Model.Feature.Assesments" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Feature.Assesments"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Feature.StudentCount" class="form-label">Student count</label>
+            <input asp-for="@Model.Feature.StudentCount" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Feature.StudentCount"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Feature.Fee" class="form-label">Fee</label>
+            <input asp-for="@Model.Feature.Fee" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Feature.Fee"></span>
+        </div>
+
+
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
+
+
