@@ -30,6 +30,10 @@ namespace BackendProjectNurlanSenior.Controllers
         public IActionResult Details(int id)
         {
             Teacher teacher = _context.Teachers.Include(t=>t.TeacherHobbies).ThenInclude(th=>th.Hobby).FirstOrDefault(t => t.Id == id);
+            if (!_context.Teachers.Any(e => e.Id == id))
+            {
+                return NotFound();
+            }
             return View(teacher);
         }
     }

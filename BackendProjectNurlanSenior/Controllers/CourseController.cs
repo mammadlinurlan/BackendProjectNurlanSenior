@@ -41,7 +41,7 @@ namespace BackendProjectNurlanSenior.Controllers
 
            
             ViewBag.CourseCategories = _context.CCategories.Include(c=>c.Courses).ToList();
-            if (courseVM==null)
+            if (!_context.Courses.Any(e => e.Id == id))
             {
                 return NotFound();
             }
@@ -85,36 +85,36 @@ namespace BackendProjectNurlanSenior.Controllers
             return View(courses);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddComment(Comment comment)
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddComment(string Subject, string Message, int CourseId)
         {
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
             if (!ModelState.IsValid) return Json(StatusCode(400));
-            if (!_context.Courses.Any(f => f.Id == comment.CourseId))
+            if (!_context.Courses.Any(f => f.Id ==CourseId))
             {
                 return NotFound();
             }
             Comment cmnt = new Comment
             {
                 AppUserId = user.Id,
-                CourseId = comment.CourseId,
+                CourseId =CourseId,
                 CreatedTime = DateTime.Now,
-                Message = comment.Message,
-                Subject=comment.Subject,
+                Message =Message,
+                Subject=Subject,
                 IsAccepted = true
             };
             _context.Comments.Add(cmnt);
             _context.SaveChanges();
-            return RedirectToAction("Details", "Course", new { id = cmnt.CourseId });
-            //return RedirectToAction("Index", "Home");
+            
 
-            //CourseVM course = new CourseVM
-            //{
-            //    Course = _context.Courses.Include(c=>c.Comments).ThenInclude(c=>c.AppUser).FirstOrDefault()
-            //};
-            //return PartialView("_CommentPartialView",course);
-            //return View();
+            CourseVM courseVM = new CourseVM
+            {
+                Course = _context.Courses.Include(c => c.Comments).ThenInclude(c => c.AppUser).FirstOrDefault(c=>c.Id == CourseId)
+
+            };
+            return PartialView("_CommentPartialView", courseVM);
+           
         }
 
         public async Task<IActionResult> DeleteComment(int id)

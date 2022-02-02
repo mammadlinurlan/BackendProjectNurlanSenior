@@ -35,6 +35,8 @@ namespace BackendProjectNurlanSenior.Controllers
 
             };
 
+           
+
             return View(blogVM);
         }
 
@@ -46,6 +48,10 @@ namespace BackendProjectNurlanSenior.Controllers
                 Blog = _context.Blogs.Include(b => b.Comments).ThenInclude(c=>c.AppUser).FirstOrDefault(b=>b.Id == id)
 
             };
+            if (!_context.Blogs.Any(e => e.Id == id))
+            {
+                return NotFound();
+            }
             return View(blogVM);
         }
 
@@ -59,31 +65,39 @@ namespace BackendProjectNurlanSenior.Controllers
             return View(BlogVM);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddComment(Comment comment)
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddComment(string Subject, string Message , int BlogId)
         {
+            //return Json(Subject);
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
             if (!ModelState.IsValid) return Json(StatusCode(400));
-            if (!_context.Blogs.Any(f => f.Id == comment.BlogId))
-            {
-                return NotFound();
-            }
+            //if (!_context.Blogs.Any(f => f.Id == comment.BlogId))
+            //{
+            //    return NotFound();
+            //}
             Comment cmnt = new Comment
             {
                 AppUserId = user.Id,
-                BlogId = comment.BlogId,
+                BlogId = BlogId,
                 CreatedTime = DateTime.Now,
-                Message = comment.Message,
-                Subject = comment.Subject,
+                Message = Message,
+                Subject = Subject,
                 IsAccepted = true
             };
             _context.Comments.Add(cmnt);
             _context.SaveChanges();
+            BlogVM blog = new BlogVM
+            {
+                Blog = _context.Blogs.Include(b => b.Comments).ThenInclude(b => b.Blog).FirstOrDefault(b => b.Id == BlogId)
+            };
 
-            return RedirectToAction("Details","Blog",new { id = cmnt.BlogId});
+            //return RedirectToAction("Details","Blog",new { id = cmnt.BlogId});
+            return PartialView("_bCommentPartialView", blog);
+            //return Json(comment);
 
         }
+
 
         public async Task<IActionResult> DeleteComment(int id)
         {

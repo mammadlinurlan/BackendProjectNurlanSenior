@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Manage\Controllers\WelcomeEduController.cs" />
     <Compile Remove="Migrations\20220128062422_createdCategoryTagCourse.cs" />
     <Compile Remove="Migrations\20220128062422_createdCategoryTagCourse.Designer.cs" />
     <Compile Remove="Migrations\20220128063127_createdCategoryTagCourses.cs" />

@@ -184,16 +184,16 @@
                     <div class="col-md-6">
                         <div class="single-event mb-35">
                             <div class="event-img">
-                                <a asp-controller="event" asp-action="details" asp-route-id="@item.Id"><img src="~/assets/img/event/@item.Image" alt="event"></a>
+                                <a asp-controller="event" asp-action="details" asp-route-id="@item.Id"><img style="width:365px;height:250px" src="~/assets/img/event/@item.Image" alt="event"></a>
                             </div>
-                            <div class="event-content text-left">
+                            <div style="height:250px" class="event-content text-left">
                                 <h3>@item.DayMonth.ToString("dd")  @item.DayMonth.ToString("MMMM")</h3>
                                 <h4><a asp-controller="event" asp-action="details" asp-route-id="@item.Id">ADVANCE PHP WORKSHOP</a></h4>
                                 <ul>
                                     <li><i class="fa fa-clock-o"></i>@item.StartTime.ToString("HH:mm") - @item.EndTime.ToString("HH:mm")</li>
                                     <li><i class="fa fa-map-marker"></i>@item.Venue</li>
                                 </ul>
-                                <div class="event-content-right">
+                                <div  class="event-content-right">
                                     <a class="default-btn" asp-controller="event" asp-action="details" asp-route-id="@item.Id">join now</a>
                                 </div>
                             </div>
@@ -210,16 +210,16 @@
                     <div class="col-md-6">
                         <div class="single-event mb-35">
                             <div class="event-img">
-                                <a asp-controller="event" asp-action="details" asp-route-id="@item.Id"><img src="~/assets/img/event/@item.Image" alt="event"></a>
+                                <a asp-controller="event" asp-action="details" asp-route-id="@item.Id"><img style="width:365px;height:250px" src="~/assets/img/event/@item.Image" alt="event"></a>
                             </div>
-                            <div class="event-content text-left">
+                            <div style="height:250px" class="event-content text-left">
                                 <h3>@item.DayMonth.ToString("dd")  @item.DayMonth.ToString("MMMM")</h3>
                                 <h4><a asp-controller="event" asp-action="details" asp-route-id="@item.Id">ADVANCE PHP WORKSHOP</a></h4>
                                 <ul>
                                     <li><i class="fa fa-clock-o"></i>@item.StartTime.ToString("HH:mm") - @item.EndTime.ToString("HH:mm")</li>
                                     <li><i class="fa fa-map-marker"></i>@item.Venue</li>
                                 </ul>
-                                <div class="event-content-right">
+                                <div  class="event-content-right">
                                     <a class="default-btn" asp-controller="event" asp-action="details" asp-route-id="@item.Id">join now</a>
                                 </div>
                             </div>

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,9 +34,10 @@ namespace BackendProjectNurlanSenior.Models
 
         public string SubsTitle { get; set; }
         [StringLength(maximumLength: 150)]
+        [DataType(DataType.EmailAddress)]
+
         public string Mail { get; set; }
         [StringLength(maximumLength: 50)]
-
 
         public string Adress { get; set; }
 
@@ -62,6 +65,12 @@ namespace BackendProjectNurlanSenior.Models
         public string InstaLink { get; set; }
         public string TwitterLink { get; set; }
         public string VimeoLink { get; set; }
+
+        [NotMapped]
+        public IFormFile BigImageFile { get; set; }
+
+        [NotMapped]
+        public IFormFile LittleImageFile { get; set; }
 
 
 

@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="~/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/assets/css/et-line-icon.css">
     <link rel="stylesheet" href="~/assets/css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/assets/css/ionicons.min.css">
     <link rel="stylesheet" href="~/assets/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="~/assets/css/style.css">
@@ -134,8 +135,8 @@
                                 </ul>
                                 <div class="search">
                                     <div class="search-form">
-                                        <form id="search-form" action="#">
-                                            <input type="search" placeholder="Search here..." name="search" />
+                                        <form id="search-form" method="get" asp-action="index" asp-controller="search">
+                                            <input type="text" id="string" placeholder="Search here..." name="string" />
                                             <button type="submit">
                                                 <span><i class="fa fa-search"></i></span>
                                             </button>
@@ -197,7 +198,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-widget pr-60">
                             <div class="footer-logo pb-25">
-                                <a href="~/assets/index.html"><img src="~/assets/img/logo/@layoutService.GetSettings().LogoBig" alt="eduhome"></a>
+                                <a href="~/assets/index.html"><img src="~/assets/img/logo/@layoutService.GetSettings().LogoLittle" alt="eduhome"></a>
                             </div>
                             <p>@layoutService.GetSettings().FooterDesc</p>
                             <div class="footer-social">
@@ -238,7 +239,7 @@
                         <div class="single-widget">
                             <h3>get in touch</h3>
                             <p>@layoutService.GetSettings().Adress</p>
-                            <p>@layoutService.GetSettings().Phone</p>
+                            <p>@layoutService.GetSettings().FooterPhone</p>
                             <p>@layoutService.GetSettings().Website</p>
                             <p>@layoutService.GetSettings().Mail</p>
                         </div>

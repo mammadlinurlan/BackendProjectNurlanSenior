@@ -39,6 +39,12 @@ namespace BackendProjectNurlanSenior.Controllers
                 Event = _context.Events.Include(e=>e.Comments).ThenInclude(c=>c.AppUser).Include(e=>e.EventSpeakers).ThenInclude(es=>es.Speaker).FirstOrDefault(e=>e.Id==id),
                 Speakers = _context.Speakers.Where(s=>s.EventSpeakers.Any(es=>es.EventId==id)).ToList()
             };
+
+            if (!_context.Events.Any(e=>e.Id==id))
+            {
+                return NotFound();
+            }
+
             return View(eventVM);
         }
 
@@ -52,29 +58,34 @@ namespace BackendProjectNurlanSenior.Controllers
             return View(eventVM);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddComment(Comment comment)
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddComment(string Subject, string Message, int EventId)
         {
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
             if (!ModelState.IsValid) return View();
-            if (!_context.Events.Any(f => f.Id == comment.EventId))
-            {
-                return NotFound();
-            }
+            //if (!_context.Events.Any(f => f.Id == comment.EventId))
+            //{
+            //    return NotFound();
+            //}
             Comment cmnt = new Comment
             {
                 AppUserId = user.Id,
-                EventId = comment.EventId,
+                EventId = EventId,
                 CreatedTime = DateTime.Now,
-                Message = comment.Message,
-                Subject = comment.Subject,
+                Message =Message,
+                Subject = Subject,
                 IsAccepted = true
             };
             _context.Comments.Add(cmnt);
             _context.SaveChanges();
-            
-            return RedirectToAction("Details", "Event", new { id = cmnt.EventId });
+
+            EventVM eventVM = new EventVM
+            {
+                Event = _context.Events.Include(b => b.Comments).ThenInclude(b => b.Blog).FirstOrDefault(b => b.Id == EventId)
+            };
+
+            return PartialView("_eCommentPartialView",eventVM);
 
         }
 

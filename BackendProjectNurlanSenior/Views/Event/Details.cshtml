@@ -60,21 +60,27 @@
                         <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut<br> the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <form asp-action="AddComment" method="post">
-                                <div class="row">
+                    <form asp-action="AddComment" method="post">
+                        <div class="row">
 
-                                    <div class="col-md-12">
-                                        <p>Subject</p>
-                                        <input asp-for="@Model.Event.Comments.FirstOrDefault().Subject">
-                                        <p>Message</p>
-                                        <textarea asp-for="@Model.Event.Comments.FirstOrDefault().Message" cols="15" rows="10"></textarea>
-                                        <input type="hidden" asp-for="@Model.Event.Comments.FirstOrDefault().EventId" value="@Model.Event.Id" />
-                                    </div>
-                                </div>
-                                <button id="addComment" type="submit"><span>send message</span></button>
+                            <div class="col-md-12">
 
-                                <p class="form-messege"></p>
-                            </form>
+                                <p id="subj">Subject</p>
+
+                                <input asp-for="@Model.Event.Comments.FirstOrDefault().Subject">
+                                <p id="message">Message</p>
+
+                                <textarea asp-for="@Model.Event.Comments.FirstOrDefault().Message" cols="15" rows="10"></textarea>
+                                <p id="eventid" style="display:none">@Model.Event.Id</p>
+
+                                <input type="hidden" asp-for="@Model.Event.Comments.FirstOrDefault().EventId" value="@Model.Event.Id" />
+                            </div>
+                        </div>
+                        <a asp-controller="Event" asp-action="AddComment" id="SendMessage">Send</a>
+
+
+                        <p class="form-messege"></p>
+                    </form>
                             <div id="addedComments">
                                 <h2>COMMENTS</h2><br />
                                 @await Html.PartialAsync("_eCommentPartialView", Model)
@@ -136,7 +142,7 @@
 @section Scripts{
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(".deleteCmt").click(function (e) {
+        $(document).on("click", ".deleteCmt", function (e) {
             
             
             e.preventDefault()
@@ -170,6 +176,32 @@
                     }
                     );
                 }
+            })
+        })
+    </script>
+
+    <script>
+        $("#SendMessage").click(function (e) {
+            e.preventDefault()
+            var link = $(this).attr("href")
+            var value = $("#hiddenId").val();
+            var subject = $("#subj").next().val();
+            var message = $("#message").next().val();
+            var eventid = $("#eventid").text();
+
+
+            console.log(link)
+            console.log(message)
+            //console.log(blogid)
+
+            var url = link + '?Subject=' + subject + '&Message=' + message + '&EventId=' + eventid
+            fetch(url).then(res => res.text()).then(data => {
+
+                console.log(data)
+                $("#addedComments").empty();
+
+                $("#addedComments").append(data);
+
             })
         })
     </script>

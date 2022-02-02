@@ -205,7 +205,7 @@
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" asp-controller="tag" asp-action="index">Tags</a></li>
-                                <li class="nav-item"> <a class="nav-link" asp-controller="category" asp-action="index" >Categories</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="category" asp-action="index">Categories</a></li>
                             </ul>
                         </div>
                     </li>
@@ -216,25 +216,74 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/charts/chartjs.html">
+                        <a class="nav-link" asp-controller="teacher" asp-action="index">
                             <i class="mdi mdi-chart-pie menu-icon"></i>
-                            <span class="menu-title">Charts</span>
+                            <span class="menu-title">Teacher</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/tables/basic-table.html">
+                        <a class="nav-link" asp-controller="course" asp-action="index">
                             <i class="mdi mdi-grid-large menu-icon"></i>
-                            <span class="menu-title">Tables</span>
+                            <span class="menu-title">Course</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/icons/mdi.html">
+                        <a class="nav-link" asp-controller="event" asp-action="index">
                             <i class="mdi mdi-emoticon menu-icon"></i>
-                            <span class="menu-title">Icons</span>
+                            <span class="menu-title">Event</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#auth"  aria-expanded="false" aria-controls="auth">
+                        <a class="nav-link" asp-controller="blog" asp-action="index">
+                            <i class="mdi mdi-emoticon menu-icon"></i>
+                            <span class="menu-title">Blog</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="hobby" asp-action="index">
+                            <i class="mdi mdi-emoticon menu-icon"></i>
+                            <span class="menu-title">Hobby</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="contact" asp-action="index">
+                            <i class="mdi mdi-emoticon menu-icon"></i>
+                            <span class="menu-title">Contact</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Noticeboard" asp-action="index">
+                            <i class="mdi mdi-emoticon menu-icon"></i>
+                            <span class="menu-title">Noticeboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="setting" asp-action="index">
+                            <i class="mdi mdi-emoticon menu-icon"></i>
+                            <span class="menu-title">Setting</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="speaker" asp-action="index">
+                            <i class="mdi mdi-emoticon menu-icon"></i>
+                            <span class="menu-title">Speaker</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="contact" asp-action="messages">
+                            <i class="mdi mdi-emoticon menu-icon"></i>
+                            <span class="menu-title">Messages to admin</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="welcome" asp-action="index">
+                            <i class="mdi mdi-emoticon menu-icon"></i>
+                            <span class="menu-title">About</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                             <i class="mdi mdi-account menu-icon"></i>
                             <span class="menu-title">Comments</span>
                             <i class="menu-arrow"></i>
@@ -244,16 +293,11 @@
                                 <li class="nav-item"> <a class="nav-link" asp-controller="comment" asp-action="blogcomments"> Blog comments </a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-controller="comment" asp-action="coursecomments"> Course comments </a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-controller="comment" asp-action="eventcomments"> Event comments </a></li>
-                               
+
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="documentation/documentation.html">
-                            <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-                            <span class="menu-title">Documentation</span>
-                        </a>
-                    </li>
+
                 </ul>
             </nav>
             <!-- partial -->

@@ -1,0 +1,50 @@
+﻿@model AllVM
+
+
+<div class="banner-area-wrapper">
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>courses</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Area End -->
+<!-- Course Start -->
+<div class="course-area pt-150 pb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.Courses.Count() == 0 && Model.Teachers.Count() == 0  && Model.Events.Count() == 0  && Model.Blogs.Count() == 0)
+            {
+                <h1 style="font-size:60px;">Not found...</h1>
+            }
+            else
+            {
+                @await Html.PartialAsync("_allPartialView", Model)
+
+            }
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+}
+<!-- Course End -->
+<!-- Subscribe Start -->

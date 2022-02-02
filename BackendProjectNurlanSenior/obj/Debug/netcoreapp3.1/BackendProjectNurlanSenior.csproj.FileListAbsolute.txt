@@ -218,3 +218,12 @@ C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSen
 C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Event\Index.cshtml.g.cs
 C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Event\Create.cshtml.g.cs
 C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Event\Edit.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Setting\Index.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Setting\Edit.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Contact\Messages.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Contact\Index.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Contact\Edit.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Welcome\Index.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Welcome\Edit.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Search\Index.cshtml.g.cs
+C:\Users\MACBOOK\source\repos\BackendProjectNurlanSenior\BackendProjectNurlanSenior\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_allPartialView.cshtml.g.cs

@@ -1,0 +1,140 @@
+﻿@model Settings
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-3">
+    <h1 class="text text-success">Edit settings</h1>
+    <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+   
+    <form method="post" class="mt-2" enctype="multipart/form-data">
+        <div class="mb-2">
+            <div>
+                <h2>CURRENT NAVBAR LOGO :</h2>
+                <img style="width:100px;" src="~/assets/img/logo/@Model.LogoBig" />
+            </div>
+            <label asp-for="@Model.BigImageFile" class="form-label">Big logo</label>
+            <input asp-for="@Model.BigImageFile" accept="image/*" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.BigImageFile"></span>
+        </div>
+        <div class="mb-2">
+            <div>
+                <h2>CURRENT FOOTER LOGO :</h2>
+                <img style="width:100px;" src="~/assets/img/logo/@Model.LogoLittle" />
+            </div>
+            <label asp-for="@Model.LittleImageFile" class="form-label">Little logo</label>
+            <input asp-for="@Model.LittleImageFile" accept="image/*" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.LittleImageFile"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Adress" class="form-label">Adress</label>
+            <input asp-for="@Model.Adress" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Adress"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Question" class="form-label">Question</label>
+            <input asp-for="@Model.Question" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Question"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Phone" class="form-label">Phone</label>
+            <input asp-for="@Model.Phone" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Phone"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.SearchIcon" class="form-label">Search icon</label>
+            <input asp-for="@Model.SearchIcon" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.SearchIcon"></span>
+        </div>
+
+
+
+        <div class="mb-2">
+            <label asp-for="@Model.SubsTitle" class="form-label">SubsTitle</label>
+            <input asp-for="@Model.SubsTitle" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.SubsTitle"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Mail" class="form-label">Mail</label>
+            <input asp-for="@Model.Mail" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Mail"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.Website" class="form-label">Website</label>
+            <input asp-for="@Model.Website" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.Website"></span>
+        </div>
+
+
+
+
+        <div class="mb-2">
+            <label asp-for="@Model.FooterPhone" class="form-label">FooterPhone</label>
+            <input asp-for="@Model.FooterPhone" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.FooterPhone"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.SubsDesc" class="form-label">SubsDesc</label>
+            <input asp-for="@Model.SubsDesc" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.SubsDesc"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.FooterDesc" class="form-label">FooterDesc</label>
+            <input asp-for="@Model.FooterDesc" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.FooterDesc"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.FbIcon" class="form-label">FbIcon</label>
+            <input asp-for="@Model.FbIcon" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.FbIcon"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.InstaIcon" class="form-label">InstaIcon</label>
+            <input asp-for="@Model.InstaIcon" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.InstaIcon"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.TwitterIcon" class="form-label">TwitterIcon</label>
+            <input asp-for="@Model.TwitterIcon" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.TwitterIcon"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.VimeoIcon" class="form-label">VimeoIcon</label>
+            <input asp-for="@Model.VimeoIcon" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.VimeoIcon"></span>
+        </div>
+
+
+        <div class="mb-2">
+            <label asp-for="@Model.FbLink" class="form-label">FbLink</label>
+            <input asp-for="@Model.FbLink" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.FbLink"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.InstaLink" class="form-label">InstaLink</label>
+            <input asp-for="@Model.InstaLink" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.InstaLink"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.TwitterLink" class="form-label">TwitterLink</label>
+            <input asp-for="@Model.TwitterLink" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.TwitterLink"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="@Model.VimeoLink" class="form-label">VimeoLink</label>
+            <input asp-for="@Model.VimeoLink" class="form-control">
+            <span class="mt-2 text text-danger" asp-validation-for="@Model.VimeoLink"></span>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
+
+
+
