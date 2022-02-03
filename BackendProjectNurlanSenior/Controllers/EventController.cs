@@ -58,6 +58,19 @@ namespace BackendProjectNurlanSenior.Controllers
             return View(eventVM);
         }
 
+        public IActionResult LiveSearch(string Name)
+        {
+
+
+            EventVM eventVM = new EventVM
+            {
+                Events = Name == null ? _context.Events.ToList() : _context.Events.Where(e => e.Name.ToLower().Trim().Contains(Name.ToLower().Trim())).ToList()
+            };
+
+            return PartialView("_EventPartialView", eventVM);
+        }
+
+
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> AddComment(string Subject, string Message, int EventId)

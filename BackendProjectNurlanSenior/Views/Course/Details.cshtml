@@ -237,6 +237,8 @@
            
 
             var url = link + '?Subject=' + subject + '&Message=' + message + '&CourseId=' + courseid
+
+            console.log(url);
             fetch(url).then(res => res.text()).then(data => {
 
                 console.log(data)

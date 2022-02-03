@@ -65,6 +65,18 @@ namespace BackendProjectNurlanSenior.Controllers
             return View(BlogVM);
         }
 
+        public IActionResult LiveSearch(string Name)
+        {
+
+
+            BlogVM BlogVM = new BlogVM
+            {
+                Blogs = Name == null ? _context.Blogs.Include(b => b.Comments).ToList() : _context.Blogs.Include(b => b.Comments).Where(e => e.Name.ToLower().Trim().Contains(Name.ToLower().Trim())).ToList()
+            };
+
+            return PartialView("_blogPartialView", BlogVM);
+        }
+
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> AddComment(string Subject, string Message , int BlogId)

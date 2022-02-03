@@ -85,6 +85,15 @@ namespace BackendProjectNurlanSenior.Controllers
             return View(courses);
         }
 
+        public IActionResult LiveSearch(string Name)
+        {
+
+
+            List<Course> courses = Name == null ? _context.Courses.ToList() : _context.Courses.Where(c => c.Name.ToLower().Contains(Name.ToLower())).ToList();
+
+
+            return PartialView("_CoursePartialView", courses);
+        }
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> AddComment(string Subject, string Message, int CourseId)

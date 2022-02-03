@@ -63,44 +63,36 @@
 
 }
 
-@foreach (Course course in Model.Courses)
+@foreach (Event item in Model.Events)
 {
-    <div class="col-md-4 col-sm-6 col-xs-12 courseForSearch">
-        <div class="single-course mb-70">
-            <div class="course-img">
-                <a asp-controller="course" asp-action="details" asp-route-id="@course.Id">
-                    <img style="height:250px" src="~/assets/img/course/@course.Image" alt="course">
+    <div class="eventforsearch col-md-6 col-sm-6 col-xs-12">
+        <div class="single-event mb-60">
+            <div class="event-img">
+                <a asp-controller="event" asp-action="details" asp-route-id="@item.Id">
+                    <img style="height:250px" src="~/assets/img/event/@item.Image" alt="event">
                     <div class="course-hover">
-                        <i class="@course.LinkLogo"></i>
+                        <i class="fa fa-link"></i>
                     </div>
                 </a>
+                <div class="event-date">
+                    <h3>@item.DayMonth.ToString("dd") <span>@item.DayMonth.ToString("MMMM")</span></h3>
+                </div>
             </div>
-            <div class="course-content">
-                <h3><a asp-controller="course" asp-action="details" asp-route-id="@course.Id">@course.Name</a></h3>
-
-
-                <p>
-                    @if (course.Description.Length > 80)
-                    {
-
-                        @course.Description.Substring(0, 80)
-                    }
-                    else
-                    {
-                        @course.Description
-
-                    }
-
-
-                </p>
-
-
-
-                <a class="default-btn" asp-controller="course" asp-action="details" asp-route-id="@course.Id">read more</a>
+            <div class="event-content text-left">
+                <h4><a asp-controller="event" asp-action="details" asp-route-id="@item.Id">@item.Name</a></h4>
+                <ul>
+                    <li><span>time:</span> @item.StartTime.ToString("HH:mm") - @item.EndTime.ToString("HH:mm")</li>
+                    <li><span>venue</span> @item.Venue</li>
+                </ul>
+                <div class="event-content-right">
+                    <a class="default-btn" asp-controller="event" asp-action="details" asp-route-id="@item.Id">join now</a>
+                </div>
             </div>
         </div>
     </div>
+
 }
+
 @foreach (Teacher teacher in Model.Teachers)
 {
     <div class="col-md-3 col-sm-4 col-xs-12">

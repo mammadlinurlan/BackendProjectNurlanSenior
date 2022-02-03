@@ -48,7 +48,7 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
 
         public IActionResult Create(CourseFeatureVM courseFeature)
         {
-            //return Json(courseFeature.Feature);
+            
             if (courseFeature.Course.CCategoryId == 0)
             {
                 courseFeature.Course.CCategoryId = null;
