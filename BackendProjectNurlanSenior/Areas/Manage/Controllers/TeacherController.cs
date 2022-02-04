@@ -49,19 +49,11 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
 
             ViewBag.Hobbies = _context.Hobbies.ToList();
             if (!ModelState.IsValid) return View();
-            //teacher.SocialMedias.FirstOrDefault().Link= 
+            
 
             teacher.TeacherHobbies = new List<TeacherHobbies>();
 
-            //teacher.SocialMedias = new List<SocialMedia>();
-            //return Json(teacher.SocialMedias)
-            //SocialMedia socialMedia = new SocialMedia
-            //{
-            //    Link = teacher.SocialMedias.FirstOrDefault().Link,
-            //    Teacher = teacher
-            //};
-            //teacher.SocialMedias.Add(socialMedia);
-
+          
 
             if (teacher.ImageFile == null)
             {

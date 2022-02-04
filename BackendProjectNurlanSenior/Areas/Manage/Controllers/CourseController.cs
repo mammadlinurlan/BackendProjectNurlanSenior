@@ -68,19 +68,19 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
 
             if (courseFeature.Course.ImageFile == null)
             {
-                ModelState.AddModelError("ImageFile", "Select image please!");
+                ModelState.AddModelError("", "Select image please!");
                 return View();
 
             }
             if (!courseFeature.Course.ImageFile.IsSizeOkay(2))
             {
-                ModelState.AddModelError("ImageFile", "Image size must be less than 2MB");
+                ModelState.AddModelError("", "Image size must be less than 2MB");
                 return View();
 
             }
             if (!courseFeature.Course.ImageFile.IsImage())
             {
-                ModelState.AddModelError("ImageFile", "Select image file!");
+                ModelState.AddModelError("", "Select image file!");
                 return View();
             }
 
@@ -139,14 +139,22 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
 
             ViewBag.CategoryIds = _context.CCategories.ToList();
             ViewBag.TagIds = _context.Tags.Include(t=>t.CourseTags).ThenInclude(ct=>ct.Course).ToList();
-            
-           
+
+
 
 
             if (!ModelState.IsValid)
             {
                 return View(courseFeature);
             }
+
+            CourseFeatureVM forView = new CourseFeatureVM
+            {
+                Course = _context.Courses.Include(f => f.Features).Include(c => c.CourseTags).ThenInclude(ct => ct.Tag).Include(c => c.CCategory).FirstOrDefault(c => c.Id == id),
+                Feature = _context.Features.Include(f => f.Course).FirstOrDefault(f => f.CourseId == courseFeature.Feature.CourseId)
+
+
+        };
 
             Course existedCourse = _context.Courses.Include(f=>f.Features).Include(c => c.CourseTags).ThenInclude(ct => ct.Tag).Include(c => c.CCategory).FirstOrDefault(c => c.Id == id);
             if (existedCourse==null)
@@ -158,14 +166,14 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
             {
                 if (!courseFeature.Course.ImageFile.IsSizeOkay(2))
                 {
-                    ModelState.AddModelError("ImageFile", "Image size must be less than 2MB");
-                    return View(courseFeature);
+                    ModelState.AddModelError("", "Image size must be less than 2MB");
+                    return View(forView);
 
                 }
                 if (!courseFeature.Course.ImageFile.IsImage())
                 {
-                    ModelState.AddModelError("ImageFile", "Select image file!");
-                    return View(courseFeature);
+                    ModelState.AddModelError("", "Select image file!");
+                    return View(forView);
                 }
 
                 Helpers.Helper.DeleteImg(_env.WebRootPath, "assets/img/course", existedCourse.Image);
@@ -174,7 +182,7 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
 
             if (courseFeature.Course.TagIds!=null)
             {
-                //return Json(courseFeature.Course.TagIds);
+                
 
 
                 foreach (var tagId in courseFeature.Course.TagIds)
@@ -188,7 +196,7 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
                             CourseId = existedCourse.Id
                         };
                         existedCourse.CourseTags.Add(ctag);
-                        //return Json(ctag);
+                       
                     }
                 }
             }

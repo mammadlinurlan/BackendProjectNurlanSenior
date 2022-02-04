@@ -38,6 +38,8 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
         }
         [Authorize(Roles = "SuperAdmin")]
 
+
+       
         public async Task<IActionResult> AdminStatus(string id)
         {
             AppUser user = await _userManager.FindByIdAsync(id);
@@ -68,6 +70,12 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
             return RedirectToAction("UserList", "Account");
         }
 
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInResult.SignOutAsync();
+            return RedirectToAction(nameof(Login));
+        }
 
         public IActionResult Login()
         {
@@ -101,6 +109,17 @@ namespace BackendProjectNurlanSenior.Areas.Manage.Controllers
             }
             return RedirectToAction("Index", "Dashboard");
 
+        }
+
+
+        public IActionResult Testuser()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Json(new { status = 400 });
+            }
+
+            return Json(new { status = 200 });
         }
 
         //public async Task CreateRole()
