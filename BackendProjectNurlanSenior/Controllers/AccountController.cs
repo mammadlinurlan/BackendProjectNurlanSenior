@@ -96,7 +96,7 @@ namespace BackendProjectNurlanSenior.Controllers
             smtp.Port = 587;
             smtp.EnableSsl = true;
 
-            smtp.Credentials = new NetworkCredential("nurlanym@code.edu.az", "nurlan123");
+            smtp.Credentials = new NetworkCredential("nurlanym@code.edu.az", "Leylus123");
             smtp.Send(mail);
             TempData["Verify"] = true;
             return RedirectToAction("Index", "Home");
